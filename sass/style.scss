@@ -1,0 +1,270 @@
+$primary-color: 		#19647E;
+$primary-dark:      #135864;
+$accent-color:  		#28AFB0;
+$divider-color: 		#DDCECD;
+$text-color:				#EEE5E5;
+$dark-color:				#37392E;
+$med-color:         #7e7c7c;
+$white:             #FFFFFF;
+
+$table-odd-color:		$divider-color;
+$table-even-color: 	$text-color;
+$table-text-color: 	$dark-color;
+
+$background-color: $text-color;
+
+body {
+  background: $background-color;
+}
+
+.content {
+  margin: 0 5px;
+}
+
+.card {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+}
+
+@media (min-width: 550px) {
+	.content {
+    margin: 0 20px;
+	}
+}
+
+a {
+  color: $text-color;
+  text-decoration: none;
+}	
+
+table {
+  border-spacing: 0 5px;
+  border-collapse: separate;
+  width: 100%;
+	thead {
+		background-color: $background-color;
+		th {
+			color: $primary-color;
+      font-size: 0.8em;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+	}
+  tbody {
+  	tr {
+			transition: background-color 0.3s;
+      background-color: $white;
+  	}
+		tr:hover {
+			background-color: $table-odd-color;
+			cursor: pointer;
+		}
+  }
+	th, td {
+		padding: 10px;
+    border-bottom: 0;
+		&.num {
+			text-align: center;
+			width: 20px;
+		}
+		&.text {
+			text-align: left;
+		}
+    &.colour {
+      width: 3px;
+      padding: 0;
+    }
+    &.pos {
+      background-color: $background-color;
+    }
+	}
+	a {
+		color: $dark-color;
+	}
+}
+
+.league-table {
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+.table-footer {
+	margin: 10px 0;
+	font-size: 0.8em;
+}
+
+nav.top-nav {
+	background-color: $primary-color;
+  margin-bottom: 20px;
+	ul {
+		@media (min-width: 550px) {
+			padding: 0 20px;
+		}
+		padding: 0;
+		margin: 0;
+		overflow: hidden;
+		list-style-type: none; 
+		li {
+			margin-bottom: 0;
+			float: left;
+			a {
+				display: inline-block;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				color: $text-color;
+				transition: background-color 0.3s;
+				&:hover, &:focus {
+					background-color: $accent-color;
+				}
+			}
+		}
+	}
+  .search {
+    position: relative;
+    i {
+      position: absolute;
+      right: 30px;
+      top: 17px;
+      color: $text-color;
+      cursor: pointer;
+      @media (min-width: 550px) {
+        right: 50px;
+      }
+    }
+    input {
+      font-size: 0.8em;
+      margin: 12px 20px;
+      padding: 4px 10px;
+      background: $primary-dark;
+      border-color: $dark-color;
+      border-radius: 15px;
+      color: $text-color;
+
+      transition: width 0.3s;
+      width: 35px;
+
+      &:focus {
+        width: 150px;
+      }
+      @media (min-width: 550px) {
+        margin-right: 40px;
+        width: 150px;
+      }
+    }
+    &:hover input {
+      width: 150px;
+    }
+  }
+}
+
+div.filters {
+  select {
+    width: 100%;
+  }
+}
+
+$crest-size: 50px;
+$score-font-size: 20px;
+
+div.fixture {
+  text-align: center;
+  background: $white;
+  font-size: 0.8em;
+  border-radius: 2px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: $primary-color;
+
+  .date {
+    margin-bottom: -10px;
+  }
+  .venue {
+    margin-top: -10px;
+  }
+  .date, .venue {
+    color: $med-color;
+    padding: 5px;
+  }
+  .teams {
+    display: flex;
+    .score {
+      margin-top: ($crest-size / 2) - ($score-font-size / 2) + 5;
+      font-size: $score-font-size;
+    }
+    .team {
+      flex: 1;
+      .crest img {
+        width: $crest-size;
+        height: $crest-size;
+      }
+    }
+  }
+
+  .line .name, .teams .score {
+    width: 100px;
+  }
+
+  .line {
+    display: flex;
+    font-size: 1.3em;
+    font-weight: lighter;
+    margin-bottom: 3px;
+    .score {
+      flex: 1;
+    }
+    .name {
+    }
+    &:last-of-type {
+      margin-bottom: 10px;
+    }
+  }
+
+}
+
+div.result {
+  td.winner {
+    font-weight: bold;
+  }
+}
+
+.timeline-month {
+  position: relative;
+  text-align: center;
+  color: $med-color;
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-bottom: 5px;
+  span {
+    background: $background-color;
+    padding: 0 10px;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-top: solid 1px $divider-color;
+    z-index: -1;
+  }
+}
+
+@media (max-width: 400px) {
+  .xs-hide { display: none; }
+}
+
+@media (min-width: 400px) {}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+

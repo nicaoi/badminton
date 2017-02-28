@@ -1,0 +1,13 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+{% for club in clubs %}
+<div>
+	<h4>{{ club.name }}</h4>
+	<h5>{{ club.id }}</h5>
+</div>
+
+{% endfor %}
+
+{% endblock %}

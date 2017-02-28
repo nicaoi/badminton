@@ -1,0 +1,72 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+<h5>
+	Grade {{ competition.division }} {{ competition.class | capitalize }} {{ competition.type | capitalize }} {{ competition.season }}
+</h5>
+
+<div class="row">
+	<div class="twelve columns fixture card">
+		<div class="date">{{ date | date }}</div>
+		<div class="teams">
+			<div class="team">
+				<div class="crest">
+					<img src="/images/crests/{{ competitors[0].crest }}"/>
+				</div>
+				<div class="name">{{ competitors[0].name }}</div>
+			</div>
+			<div class="score">{{ scores[0].score }} : {{ scores[1].score }}</div>
+			<div class="team">
+				<div class="crest">
+					<img src="/images/crests/{{ competitors[1].crest }}"/>
+				</div>
+				<div class="name">{{ competitors[1].name }}</div>
+			</div>
+		</div>
+		<div class="line">
+			<div class="score">3</div>
+			<div class="name">Matches</div>
+			<div class="score">1</div>
+		</div>
+		<div class="line">
+			<div class="score">8</div>
+			<div class="name">Games</div>
+			<div class="score">4</div>
+		</div>
+		<div class="line">
+			<div class="score">150</div>
+			<div class="name">Points</div>
+			<div class="score">140</div>
+		</div>
+		<div class="venue">{{ location.name }}</div>
+	</div>
+</div>
+
+<div class="row">
+
+</div>
+
+<div class="result">
+
+	<table>
+		<tbody>
+		{% for match in matches %}
+			<tr class="card">
+				<td>{{ match.class }}</td>
+				{% for competitor in match.competitors %}
+					<td {% if competitor.id == match.winner_id %} class="winner" {% endif %}>{{ competitor.name }}</td>
+				{% endfor %}
+				<td>
+					{% for game in match.games %}
+						{{ game.scores[0].score }}-{{ game.scores[1].score }}
+					{% endfor %}
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+</div>
+
+{% endblock %}

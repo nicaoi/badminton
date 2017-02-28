@@ -1,0 +1,71 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+<div class="filters row">
+	<div class="three columns">
+		League Filters:
+	</div>
+	<div class="three columns">
+		<select>
+			<option>Type</option>
+			{% for type in types %}
+				<option>{{ type.name }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="three columns">
+		<select>
+			<option>Division</option>
+			{% for division in divisions %}
+				<option>{{ division.name }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="three columns">
+		<select>
+			<option>Section</option>
+			{% for section in sections %}
+				<option>{{ section.name }}</option>
+			{% endfor %}
+		</select>
+	</div>
+</div>
+
+<div class="league-table">
+	<h4>{{ league.type }} Divsion {{ league.division }}</h4>
+	<div>
+		<table>
+			<thead>
+				<th class="num xs-hide pos"></th>
+				<th class="colour"></th>
+				<th class="text"></th>
+				<th class="num">P</th>
+				<th class="num xs-hide">W</th>
+				<th class="num xs-hide">D</th>
+				<th class="num xs-hide">L</th>
+				<th class="num">Pt</th>
+			</thead>
+			<tbody>
+				{% for standing in standings %}
+					<tr>
+						<td class="num xs-hide pos">{{ loop.index }}</td>
+						<td class="colour" style="background-color: {{ standing.club.colour }}"></td>
+						<td class="text">{{ standing.club.name }}</td>
+						<td class="num">{{ standing.played }}</td>
+						<td class="num xs-hide">{{ standing.won }}</td>
+						<td class="num xs-hide">{{ standing.drawn }}</td>
+						<td class="num xs-hide">{{ standing.lost }}</td>
+						<td class="num">{{ standing.points }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<div style="margin: auto; text-align: center;">
+			<button>Fixtures</button>
+			<button>Results</button>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
