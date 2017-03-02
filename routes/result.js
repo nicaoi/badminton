@@ -1,5 +1,8 @@
-var express = require('express');
-var router = express.Router();
+'use strict';
+
+let express = require('express');
+let path = require("path");
+let router = express.Router();
 
 router.get('/', function(req, res, next) {
   res.render('results', {});
@@ -52,7 +55,16 @@ var match = {
   ]
 };
 
-var matches = [match, match, match, match];
+let matches = [match, match, match, match];
+
+router.get('/test', function(req, res, next) {
+
+  require('../service/results').getLeagueData(function(data) {
+    res.send(data);
+  });
+
+});
+
 
 router.get('/:id', function(req, res, next) {
   res.render('result', {
@@ -87,5 +99,6 @@ router.get('/:id', function(req, res, next) {
     'matches': matches
   });
 });
+
 
 module.exports = router;

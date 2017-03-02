@@ -80,6 +80,9 @@ table {
 	a {
 		color: $dark-color;
 	}
+  h1, h2, h3, h4, h5 {
+    margin-bottom: 0;
+  }
 }
 
 .league-table {
@@ -223,8 +226,15 @@ div.fixture {
 }
 
 div.result {
-  td.winner {
-    font-weight: bold;
+  table {
+    tr.card {
+      box-shadow: none;
+      cursor: default;
+    }
+    border-collapse: collapse;
+    td.winner {
+      font-weight: bold;
+    }
   }
 }
 

@@ -75,6 +75,10 @@ table a {
   color: #37392E;
 }
 
+table h1, table h2, table h3, table h4, table h5 {
+  margin-bottom: 0;
+}
+
 .league-table h4 {
   margin-bottom: 0;
 }
@@ -229,7 +233,16 @@ div.fixture .line:last-of-type {
   margin-bottom: 10px;
 }
 
-div.result td.winner {
+div.result table {
+  border-collapse: collapse;
+}
+
+div.result table tr.card {
+  box-shadow: none;
+  cursor: default;
+}
+
+div.result table td.winner {
   font-weight: bold;
 }
 

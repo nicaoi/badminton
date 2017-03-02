@@ -22,24 +22,19 @@
 			{% endfor %}
 		</select>
 	</div>
-	<div class="three columns">
-		<select>
-			<option>Section</option>
-			{% for section in sections %}
-				<option>{{ section.name }}</option>
-			{% endfor %}
-		</select>
-	</div>
 </div>
 
+{% for league in leagues %}
 <div class="league-table">
-	<h4>{{ league.type }} Divsion {{ league.division }}</h4>
+	<h4>Grade {{ league.grade }} {{ league.type }}</h4>
 	<div>
 		<table>
 			<thead>
 				<th class="num xs-hide pos"></th>
 				<th class="colour"></th>
-				<th class="text"></th>
+				<th class="text">
+					<h5>{{ league.section != null ? ('Section ' ~ league.section) : '&nbsp;' }}</h5>
+				</th>
 				<th class="num">P</th>
 				<th class="num xs-hide">W</th>
 				<th class="num xs-hide">D</th>
@@ -47,11 +42,11 @@
 				<th class="num">Pt</th>
 			</thead>
 			<tbody>
-				{% for standing in standings %}
+				{% for standing in league.teams %}
 					<tr>
 						<td class="num xs-hide pos">{{ loop.index }}</td>
 						<td class="colour" style="background-color: {{ standing.club.colour }}"></td>
-						<td class="text">{{ standing.club.name }}</td>
+						<td class="text">{{ standing.name }}</td>
 						<td class="num">{{ standing.played }}</td>
 						<td class="num xs-hide">{{ standing.won }}</td>
 						<td class="num xs-hide">{{ standing.drawn }}</td>
@@ -67,5 +62,6 @@
 		</div>
 	</div>
 </div>
+{% endfor %}
 
 {% endblock %}

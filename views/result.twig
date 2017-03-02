@@ -49,11 +49,11 @@
 
 <div class="result">
 
-	<table>
+	<table class="card">
 		<tbody>
 		{% for match in matches %}
 			<tr class="card">
-				<td>{{ match.class }}</td>
+				<td class="num">{{ match.class }}</td>
 				{% for competitor in match.competitors %}
 					<td {% if competitor.id == match.winner_id %} class="winner" {% endif %}>{{ competitor.name }}</td>
 				{% endfor %}

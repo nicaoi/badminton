@@ -31,4 +31,6 @@ npm-debug.log
 
 .idea/*
 
+data/*.yml
+
 .DS_Store
